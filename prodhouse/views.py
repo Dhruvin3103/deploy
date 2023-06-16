@@ -17,4 +17,5 @@ class ContactusAPI(GenericAPIView, CreateModelMixin):
     serializer_class = ContactusSerializer
     queryset = Contactus.objects.all()
     def post(self, request):
+        #email
         return self.create(request)
