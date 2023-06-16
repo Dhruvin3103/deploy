@@ -27,6 +27,8 @@ class Slave(models.Model):
     name = models.CharField(max_length=300)
     email = models.EmailField()
     phone = PhoneNumberField(null=False, blank=False, unique=True)
+    detail = models.CharField(max_length=300,default="")
+    role = models.CharField(max_length=300,default="")
     image = models.ImageField(upload_to="image/slave/")
 
     def __str__(self) -> str:
