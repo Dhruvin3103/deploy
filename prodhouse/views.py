@@ -5,11 +5,13 @@ from  rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin,CreateModelMixin
 # Create your views here.
 
-class PortfolioAPI(GenericAPIView, ListModelMixin):
+class PortfolioAPI(GenericAPIView, ListModelMixin, CreateModelMixin):
     serializer_class = PortfolioSerializer
     queryset = Portfolio.objects.all()
     def get(self, request):
         return self.list(request)
+    def post(self, request):
+        return self.create(request)
 
 class ContactusAPI(GenericAPIView, CreateModelMixin):
     serializer_class = ContactusSerializer

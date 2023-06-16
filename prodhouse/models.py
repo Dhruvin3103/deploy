@@ -2,9 +2,14 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 class Portfolio(models.Model):
+    CHOICES = (
+        ('current', 'current projects'),
+        ('past', 'past projects'),
+        ('upcoming', 'upcoming projects'),
+    )
     name = models.CharField(max_length=300)
     image = models.ImageField(upload_to="image/portfolio/")
-
+    project_type = models.CharField(max_length=300,choices=CHOICES,default='past')
     def __str__(self):
         return self.name
 
