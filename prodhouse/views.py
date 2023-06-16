@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from .models import Portfolio
-from .serializer import PortfolioSerializer
+from .models import Portfolio,Contactus
+from .serializer import PortfolioSerializer,ContactusSerializer
 from  rest_framework.generics import GenericAPIView
-from rest_framework.mixins import ListModelMixin
+from rest_framework.mixins import ListModelMixin,CreateModelMixin
 # Create your views here.
 
 class PortfolioAPI(GenericAPIView, ListModelMixin):
@@ -10,3 +10,9 @@ class PortfolioAPI(GenericAPIView, ListModelMixin):
     queryset = Portfolio.objects.all()
     def get(self, request):
         return self.list(request)
+
+class ContactusAPI(GenericAPIView, CreateModelMixin):
+    serializer_class = ContactusSerializer
+    queryset = Contactus.objects.all()
+    def post(self, request):
+        return self.create(request)
