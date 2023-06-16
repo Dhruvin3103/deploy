@@ -21,3 +21,14 @@ class Contactus(models.Model):
 
     def __str__(self) -> str:
         return self.name+' '+self.email
+    
+
+class Slave(models.Model):
+    name = models.CharField(max_length=300)
+    email = models.EmailField()
+    phone = PhoneNumberField(null=False, blank=False, unique=True)
+    image = models.ImageField(upload_to="image/slave/")
+
+    def __str__(self) -> str:
+        return self.name+' '+self.email
+    

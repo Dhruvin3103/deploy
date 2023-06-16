@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Portfolio,Contactus
-from .serializer import PortfolioSerializer,ContactusSerializer
+from .models import Portfolio,Contactus,Slave
+from .serializer import PortfolioSerializer,ContactusSerializer,SlaveSerializer
 from  rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin,CreateModelMixin
 from django.core.mail import send_mail
@@ -11,6 +11,14 @@ from rest_framework.response import Response
 class PortfolioAPI(GenericAPIView, ListModelMixin, CreateModelMixin):
     serializer_class = PortfolioSerializer
     queryset = Portfolio.objects.all()
+    def get(self, request):
+        return self.list(request)
+    def post(self, request):
+        return self.create(request)
+
+class SlaveAPI(GenericAPIView, ListModelMixin, CreateModelMixin):
+    serializer_class = SlaveSerializer
+    queryset = Slave.objects.all()
     def get(self, request):
         return self.list(request)
     def post(self, request):

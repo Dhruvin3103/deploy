@@ -10,3 +10,8 @@ class ContactusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contactus
         fields = '__all__'
+
+class SlaveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Slave
+        fields = '__all__'
